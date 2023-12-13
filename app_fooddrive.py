@@ -34,8 +34,7 @@ def dashboard():
 # Page 2: Exploratory Data Analysis (EDA)
 def exploratory_data_analysis():
     st.title("Exploratory Data Analysis")
-
-
+    import plotly.express as px
     # Visualize the distribution of numerical features using Plotly
     fig = px.histogram(data_cleaned, x='# of Adult Volunteers', nbins=20, labels={'# of Adult Volunteers': 'Adult Volunteers'})
     st.plotly_chart(fig)
@@ -96,6 +95,7 @@ def neighbourhood_mapping():
         if filtered_data.empty:
             st.write("No data found for the specified neighborhood.")
         else:
+            import plotly.express as px
             # Create the map using the filtered data
             fig = px.scatter_mapbox(filtered_data,
                                     lat='Latitude',
