@@ -1,6 +1,7 @@
-gradientai==1.3.0
-joblib==1.3.2
-numpy==1.23.5
-pandas==1.5.3
+gradientai
+os
+joblib
+numpy
+pandas
 plotly
-streamlit==1.29.0
+streamlit
