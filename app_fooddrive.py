@@ -78,33 +78,23 @@ def machine_learning_modeling():
     option = st.selectbox( "How do you want the prediction to look like?",('Exact number of donation bags', 'Outcome class: Success rate(1) or Failure(0)'))
     st.write('You selected:', option)
     if option == "Exact number of donation bags":
-    # Predict button
-        if st.button("Predict"):
-        # Load the trained model
-                                                                              
-            model = joblib.load('knn_regressor_model.pkl')
-
-            # Prepare input data for prediction
-            input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
-        
-            # Make prediction
-            prediction = np.round(model.predict(input_data))
-
-            # Display the prediction
-            st.success(f"Predicted Donation Bags: {prediction[0]}")
-
+        model_= "knn_regressor_model.pkl"
     else:
-        if st.button("Predict"):
-            model = joblib.load('decision_tree_classifier_model.pkl')
+        model_="decision_tree_classifier_model.pkl"
+    # Predict button
 
-            # Prepare input data for prediction
-            input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
-        
-            # Make prediction
-            prediction = np.round(model.predict(input_data))
+    if st.button("Predict"):
+        # Load the trained model
+        model = joblib.load(model_)
 
-            # Display the prediction
-            st.success(f"Predicted Donation Bags: {prediction[0]}")
+        # Prepare input data for prediction
+        input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
+
+        # Make prediction
+        prediction = np.round(model.predict(input_data))
+
+        # Display the prediction
+        st.success(f"Predicted Donation Bags: {prediction[0]}")
 
             # You can add additional information or actions based on the prediction if needed
 # Page 4: Neighbourhood Mapping
