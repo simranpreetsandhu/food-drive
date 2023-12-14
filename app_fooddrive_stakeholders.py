@@ -129,9 +129,7 @@ def neighbourhood_mapping():
         st.write("Please enter a neighborhood to generate the map.")
 
 
-
-
-def Map_generation_google():
+def map_generation_google():
     st.title('Google Map')
     st.write('Here is an example of embedded edmonton ward Map:')
 
@@ -174,7 +172,7 @@ def chatbot():
 # Main App Logic
 def main():
     st.sidebar.title("Food Drive App")
-    app_page = st.sidebar.radio("Select a Page", ["Dashboard", "EDA", "ML Modeling", "Neighbourhood Mapping", "Data Collection", "Chatbot"])
+    app_page = st.sidebar.radio("Select a Page", ["Dashboard", "EDA", "ML Modeling", "Neighbourhood Mapping", "Data Collection", "Google map generation","Chatbot"])
 
     if app_page == "Dashboard":
         dashboard()
