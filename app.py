@@ -84,7 +84,7 @@ def machine_learning_modeling():
         model = KNeighborsRegressor(n_neighbors=5)  # You can adjust the number of neighbors
         model.fit(X_train, y_train)
         input_data = {"# of Adult Volunteers":[adult_volunteers],"# of Youth Volunteers":[youth_volunteers],"Time to Complete (min)":[time_spent],"Completed More Than One Route":[completed_routes],'Routes Completed': [routes_completed],"Doors in Route":[doors_in_route]}
-        user_input = np.array(user_input).reshape(-1,1)
+        user_input = np.array(input_data).reshape(-1,1)
         # Prepare input data for prediction
         #input_data = [[adult_volunteers, youth_volunteers, time_spent, routes_completed , doors_in_route]] 
 
