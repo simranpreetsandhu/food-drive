@@ -74,11 +74,18 @@ def machine_learning_modeling():
 
     # Predict button
     if st.button("Predict"):
-        # Load the trained model
-        model = joblib.load('k_nearest_neighbor_regressor_model.pkl')
+        from sklearn.model_selection import train_test_split
+        
+        X = data_cleaned.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0'])
+        y = data_cleaned['Donation Bags Collected']
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+        from sklearn.neighbors import KNeighborsRegressor
+        model = KNeighborsRegressor(n_neighbors=5)  # You can adjust the number of neighbors
+        model.fit(X_train, y_train)
 
         # Prepare input data for prediction
-        input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
+        input_data = [[adult_volunteers, youth_volunteers, time_spent, completed_routes, routes_completed , doors_in_route]] 
 
         # Make prediction
         prediction = np.round(model.predict(input_data))
@@ -121,6 +128,17 @@ def neighbourhood_mapping():
     else:
         st.write("Please enter a neighborhood to generate the map.")
 
+
+
+
+def Map_generation_google():
+    st.title('My Google Map')
+    st.write('Here is an example of embedded edmonton ward Map:')
+
+    # Embedding Google Map using HTML iframe
+    st.markdown("""
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1w8HXqsLHxfmFz8bvqhDspqC90xm6vyE&ehbc=2E312F" width="640" height="480"></iframe>
+    """, unsafe_allow_html=True)
 
 # Page 5: Data Collection
 def data_collection():
@@ -166,6 +184,8 @@ def main():
         machine_learning_modeling()
     elif app_page == "Neighbourhood Mapping":
         neighbourhood_mapping()
+    elif app_page == "Google map generation":
+        Map_generation_google()
     elif app_page == "Data Collection":
         data_collection()
     elif app_page == "Chatbot":
