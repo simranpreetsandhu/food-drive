@@ -83,7 +83,7 @@ def machine_learning_modeling():
         input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
 
         # Make prediction
-        prediction = model.predict(input_data)
+        prediction = np.round(model.predict(input_data))
 
         # Display the prediction
         st.success(f"Predicted Donation Bags: {prediction[0]}")
