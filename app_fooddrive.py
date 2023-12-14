@@ -77,15 +77,15 @@ def machine_learning_modeling():
     st.write("Please select the option how you want the prediction to look like.")
     option = st.selectbox( "How do you want the prediction to look like?",('Exact number of donation bags', 'Outcome class: Success rate(1) or Failure(0)'))
     st.write('You selected:', option)
-    if option == "Exact number of donation bags":
-        model_= "knn_regressor_model.pkl"
+    #if option == "Exact number of donation bags":
+     #   model_= "knn_regressor_model.pkl"
     #else:
      #   model_="decision_tree_classifier_model.pkl"
     # Predict button
 
     if st.button("Predict"):
         # Load the trained model
-        model = joblib.load(model_)
+        model = joblib.load("knn_regressor_model.pkl")
 
         # Prepare input data for prediction
         input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
