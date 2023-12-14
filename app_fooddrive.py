@@ -25,7 +25,8 @@ def dashboard():
     st.subheader("👨🏻‍💻 What our Project Does?")
 
     what_it_does = '''
-    Your project description goes here.
+    We started a thorough data collecting phase utilising Google Forms for our food drive project, which was launched on September 23rd. Manual collection and Excel tools were also used for data collection. This project was made possible by the cooperative efforts of student organisations and Edmonton city volunteers. After that, in order to improve the quality and consistency of our dataset, we carefully cleaned the data, eliminating duplicates and standardizing formats to enhance the quality and reliability of our dataset. 
+    Our machine learning goal is to solve a regression issue by predicting the number of donation bags that will be collected. This helps with the efficient resource utilization and allocation of volunteers. We created a user-friendly dashboard with tools for Exploratory Data Analysis (EDA), ML Modelling, Neighbourhood Mapping, Data Collection,  data visualizationas well as a chatbot for communicating with stakeholders. Among them the ML Modelling part helps  to predict number of donation bags in each stake, the EDA part offers insightful visualisations. A link to an updated Google Form is provided for volunteers in the Data Collection section, and the Neighbourhood Mapping option creates maps based on user inputs. The Chatbot enables easy communication among volunteers.
     '''
 
     st.write(what_it_does)
