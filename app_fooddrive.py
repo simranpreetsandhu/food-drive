@@ -17,7 +17,7 @@ def dashboard():
     st.subheader("💡 Abstract:")
 
     inspiration = '''
-    The Edmonton Food Drive Project....Talk about the Project here and lessons learned
+    The Edmonton Food Drive project intends to use machine learning to optimise drop-off and pick-up operations in order to revolutionise food donation management in Edmonton, Alberta. Current challenges in coordination and route planning necessitate automation for timely collections and reduced logistical complexities. Creating a machine learning model to determine the best drop-off sites, automating pick-up routes, and enhancing stakeholder communication are among the goals. The strategy include developing route planning algorithms, putting in place a centralised system for stakeholder cooperation, and evaluating historical data to determine the best sites. Lessons learnt include enhanced efficiency, improved resource utilization insights, and the value of real-time data in refining donation processes.
     '''
 
     st.write(inspiration)
@@ -75,15 +75,12 @@ def machine_learning_modeling():
     doors_in_route = st.slider("Number of Doors in Route", 10, 500, 100)
     youth_volunteers = st.slider("Number of Youth Volunteers", 1, 50, 10)
     
-    #if option == "Exact number of donation bags":
-     #   model_= "knn_regressor_model.pkl"
-    #else:
-     #   model_="decision_tree_classifier_model.pkl"
+
     # Predict button
 
     if st.button("Predict"):
         # Load the trained model
-        model = joblib.load("knn_regressor_model.pkl")
+        model = joblib.load("random_forest_regressor_model (1).pkl")
 
         # Prepare input data for prediction
         input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
