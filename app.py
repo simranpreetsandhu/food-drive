@@ -75,8 +75,8 @@ def machine_learning_modeling():
     # Predict button
     if st.button("Predict"):
         from sklearn.model_selection import train_test_split
-        data_copy= data.copy()
-        X = data_copy.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0'],inplace=True)
+
+        X = data.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0'])
         y = data['Donation Bags Collected']
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
@@ -85,14 +85,11 @@ def machine_learning_modeling():
         model.fit(X_train, y_train)
         input_data = {"# of Adult Volunteers":[adult_volunteers],"# of Youth Volunteers":[youth_volunteers],"Time to Complete (min)":[time_spent],"Completed More Than One Route":[completed_routes],'Routes Completed': [routes_completed],"Doors in Route":[doors_in_route]}
 
-        # Create a dataframe from the dictionary
-        input_df = pd.DataFrame(data)
-
         # Prepare input data for prediction
         #input_data = [[adult_volunteers, youth_volunteers, time_spent, routes_completed , doors_in_route]] 
 
         # Make prediction
-        prediction = np.round(model.predict(input_df))
+        prediction = np.round(model.predict(input_data))
 
         # Display the prediction
         st.success(f"Predicted Donation Bags: {prediction[0]}")
