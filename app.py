@@ -76,7 +76,7 @@ def machine_learning_modeling():
     if st.button("Predict"):
         from sklearn.model_selection import train_test_split
         
-        X = data.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0'])
+        X = data.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0'],inplace=True)
         y = data['Donation Bags Collected']
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
