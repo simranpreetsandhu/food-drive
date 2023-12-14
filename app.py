@@ -146,8 +146,7 @@ def data_collection():
     st.markdown(f"[Fill out the form]({google_form_url})")
 
 # Page 6: Chatbot
-os.environ['GRADIENT_ACCESS_TOKEN'] = "YOUR_TOKEN"
-os.environ['GRADIENT_WORKSPACE_ID'] = "YOUR_WORKSPACE_ID_workspace"
+
 def chatbot():
     st.title("Interactive Food Drive Assistant")
     st.write("Ask a question about the Food Drive!")
