@@ -29,6 +29,9 @@ def dashboard():
     '''
 
     st.write(what_it_does)
+    st.subheader(" 🤝 Our partners:")
+    
+    st.image("city.png","church.png","foodbank.png",use_column_width = "auto")
 
 
 # Page 2: Exploratory Data Analysis (EDA)
@@ -36,6 +39,12 @@ def exploratory_data_analysis():
     st.title("Exploratory Data Analysis")
     import plotly.express as px
     # Visualize the distribution of numerical features using Plotly
+    grouped_data = data_cleaned.groupby('Stake')['Donation Bags Collected'].sum().reset_index()
+
+    # Plot the bar chart
+    fig = px.bar(grouped_data, x='Stake', y='Donation Bags Collected', title='Total donation bags collected by stakes')
+    st.plotly_chart(fig)
+    
     fig = px.histogram(data_cleaned, x='# of Adult Volunteers', nbins=20, labels={'# of Adult Volunteers': 'Adult Volunteers'})
     st.plotly_chart(fig)
 
@@ -47,6 +56,7 @@ def exploratory_data_analysis():
 
     fig = px.histogram(data_cleaned, x='Time to Complete (min)', nbins=20, labels={'Time to Complete (min)': 'Time to Complete'})
     st.plotly_chart(fig)
+    
 
 # Page 3: Machine Learning Modeling
 def machine_learning_modeling():
@@ -64,18 +74,34 @@ def machine_learning_modeling():
     # Predict button
     if st.button("Predict"):
         # Load the trained model
-        model = joblib.load('random_forest_regressor_model (1).pkl')
+        st.write("Please select the option how you want the prediction to look like.")
+        option = st.selectbox( "How do you want the prediction to look like?",('Exact number of donation bags', 'Outcome class: Success rate(1) or Failure(0)" ))
+        st.write('You selected:', option)                                                                      
+        if option=="Exact number":
+            model = joblib.load('knn_regressor_model.pkl')
 
-        # Prepare input data for prediction
-        input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
+            # Prepare input data for prediction
+            input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
+        
+            # Make prediction
+            prediction = np.round(model.predict(input_data))
 
-        # Make prediction
-        prediction = np.round(model.predict(input_data))
+            # Display the prediction
+            st.success(f"Predicted Donation Bags: {prediction[0]}")
 
-        # Display the prediction
-        st.success(f"Predicted Donation Bags: {prediction[0]}")
+        else:                                                                      
+            model = joblib.load('decision_tree_classifier_model.pkl')
 
-        # You can add additional information or actions based on the prediction if needed
+            # Prepare input data for prediction
+            input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
+        
+            # Make prediction
+            prediction = np.round(model.predict(input_data))
+
+            # Display the prediction
+            st.success(f"Predicted Donation Bags: {prediction[0]}")
+
+            # You can add additional information or actions based on the prediction if needed
 # Page 4: Neighbourhood Mapping
 # Read geospatial data
 geodata = pd.read_csv("ADDRESS ONLY Property_Assessment_Data__Current_Calendar_Year_ - Property_Assessment_Data__Current_Calendar_Year_.csv")
