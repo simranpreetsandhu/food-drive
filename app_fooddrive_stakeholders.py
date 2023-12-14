@@ -132,7 +132,7 @@ def neighbourhood_mapping():
 
 
 def Map_generation_google():
-    st.title('My Google Map')
+    st.title('Google Map')
     st.write('Here is an example of embedded edmonton ward Map:')
 
     # Embedding Google Map using HTML iframe
