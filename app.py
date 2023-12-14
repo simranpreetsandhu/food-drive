@@ -76,8 +76,8 @@ def machine_learning_modeling():
     if st.button("Predict"):
         from sklearn.model_selection import train_test_split
         
-        X = data_cleaned.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0'])
-        y = data_cleaned['Donation Bags Collected']
+        X = data.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0'])
+        y = data['Donation Bags Collected']
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
         from sklearn.neighbors import KNeighborsRegressor
@@ -183,7 +183,7 @@ def main():
     elif app_page == "Neighbourhood Mapping":
         neighbourhood_mapping()
     elif app_page == "Google map generation":
-        Map_generation_google()
+        map_generation_google()
     elif app_page == "Data Collection":
         data_collection()
     elif app_page == "Chatbot":
