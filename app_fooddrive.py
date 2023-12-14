@@ -74,19 +74,16 @@ def machine_learning_modeling():
     adult_volunteers = st.slider("Number of Adult Volunteers", 1, 50, 10)
     doors_in_route = st.slider("Number of Doors in Route", 10, 500, 100)
     youth_volunteers = st.slider("Number of Youth Volunteers", 1, 50, 10)
-    
-
-    # Predict button
-
+     # Predict button
     if st.button("Predict"):
         # Load the trained model
-        model = joblib.load("random_forest_regressor_model (1).pkl")
+        model = joblib.load('random_forest_classifier_model (1).pkl')
 
         # Prepare input data for prediction
         input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
 
         # Make prediction
-        prediction = np.round(model.predict(input_data))
+        prediction = model.predict(input_data)
 
         # Display the prediction
         st.success(f"Predicted Donation Bags: {prediction[0]}")
