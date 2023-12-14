@@ -75,7 +75,7 @@ def machine_learning_modeling():
     # Predict button
     if st.button("Predict"):
         # Load the trained model
-        model = joblib.load('knn_regressor_model_fd.pkl')
+        model = joblib.load('decision_tree_classifier_model_fd.pkl')
 
         # Prepare input data for prediction
         input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
