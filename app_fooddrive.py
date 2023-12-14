@@ -74,9 +74,7 @@ def machine_learning_modeling():
     adult_volunteers = st.slider("Number of Adult Volunteers", 1, 50, 10)
     doors_in_route = st.slider("Number of Doors in Route", 10, 500, 100)
     youth_volunteers = st.slider("Number of Youth Volunteers", 1, 50, 10)
-    st.write("Please select the option how you want the prediction to look like.")
-    option = st.selectbox( "How do you want the prediction to look like?",('Exact number of donation bags', 'Outcome class: Success rate(1) or Failure(0)'))
-    st.write('You selected:', option)
+    
     #if option == "Exact number of donation bags":
      #   model_= "knn_regressor_model.pkl"
     #else:
@@ -85,7 +83,7 @@ def machine_learning_modeling():
 
     if st.button("Predict"):
         # Load the trained model
-        model = joblib.load("decision_tree_classifier_model.pkl")
+        model = joblib.load("knn_regressor_model.pkl")
 
         # Prepare input data for prediction
         input_data = [[completed_routes, routes_completed, time_spent, adult_volunteers, doors_in_route, youth_volunteers]]
