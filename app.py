@@ -161,9 +161,6 @@ def chatbot():
 
             # before fine-tuning
             completion = new_model_adapter.complete(query=sample_query, max_generated_token_count=100).generated_output
-            print(f"Generated (before fine-tune): {completion}")
-
-            completion = new_model_adapter.complete(query=sample_query, max_generated_token_count=100).generated_output
             st.markdown(f"Generated: {completion}")
 
         # Delete the model adapter after generating the response
