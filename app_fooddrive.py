@@ -79,8 +79,8 @@ def machine_learning_modeling():
     st.write('You selected:', option)
     if option == "Exact number of donation bags":
         model_= "knn_regressor_model.pkl"
-    else:
-        model_="decision_tree_classifier_model.pkl"
+    #else:
+     #   model_="decision_tree_classifier_model.pkl"
     # Predict button
 
     if st.button("Predict"):
