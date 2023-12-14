@@ -32,7 +32,9 @@ def dashboard():
     st.subheader(" 🤝 Our partners:")
     
     st.image("city.png",use_column_width = "auto")
+    
     st.image("church.png",use_column_width = "auto")
+    
     st.image("foodbank.png",use_column_width = "auto")
 
 
@@ -75,12 +77,11 @@ def machine_learning_modeling():
     st.write("Please select the option how you want the prediction to look like.")
     option = st.selectbox( "How do you want the prediction to look like?",('Exact number of donation bags', 'Outcome class: Success rate(1) or Failure(0)'))
     st.write('You selected:', option)
-
+    if option == "Exact number of donation bags":
     # Predict button
-    if st.button("Predict"):
+        if st.button("Predict"):
         # Load the trained model
                                                                               
-        if option=="Exact number of donation bags":
             model = joblib.load('knn_regressor_model.pkl')
 
             # Prepare input data for prediction
@@ -92,7 +93,8 @@ def machine_learning_modeling():
             # Display the prediction
             st.success(f"Predicted Donation Bags: {prediction[0]}")
 
-        else:                                                                      
+    else:
+        if st.button("Predict"):
             model = joblib.load('decision_tree_classifier_model.pkl')
 
             # Prepare input data for prediction
