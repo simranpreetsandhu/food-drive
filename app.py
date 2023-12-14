@@ -65,7 +65,7 @@ def machine_learning_modeling():
     st.write("Enter the details to predict donation bags:")
 
     # Input fields for user to enter data
-    #completed_routes = st.slider("Completed More Than One Route", 0, 1, 0)
+    completed_routes = st.slider("Completed More Than One Route", 0, 1, 0)
     routes_completed = st.slider("Routes Completed", 1, 10, 5)
     time_spent = st.slider("Time Spent (minutes)", 10, 300, 60)
     adult_volunteers = st.slider("Number of Adult Volunteers", 1, 50, 10)
@@ -76,14 +76,14 @@ def machine_learning_modeling():
     if st.button("Predict"):
         from sklearn.model_selection import train_test_split
         
-        X = data.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0','Completed More Than One Route'])
+        X = data.drop(columns=['Donation Bags Collected','Location','Ward/Branch','Stake','Unnamed: 0'])
         y = data['Donation Bags Collected']
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
         from sklearn.neighbors import KNeighborsRegressor
         model = KNeighborsRegressor(n_neighbors=5)  # You can adjust the number of neighbors
         model.fit(X_train, y_train)
-        input_data = {"Number of Adult Volunteers":[adult_volunteers],"Number of Youth Volunteers":[youth_volunteers],"Time Spent (minutes)":[time_spent],'Routes Completed': [routes_completed],"Number of Doors in Route":[doors_in_route]}
+        input_data = {"# of Adult Volunteers":[adult_volunteers],"# of Youth Volunteers":[youth_volunteers],"Time to Complete (min)":[time_spent],"Completed More Than One Route":[completed_routes],'Routes Completed': [routes_completed],"Doors in Route":[doors_in_route]}
 
         # Create a dataframe from the dictionary
         input_df = pd.DataFrame(data)
