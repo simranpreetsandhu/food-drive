@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import joblib
+import sklearn
 from gradientai import Gradient
 
 # Load the dataset with a specified encoding
