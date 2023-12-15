@@ -142,7 +142,7 @@ def map_generation_google():
 def data_collection():
     st.title("Data Collection")
     st.write("Please fill out the Google form to contribute to our Food Drive!")
-    google_form_url = "https://forms.gle/NQX4z9WwqhJaeUFV8"#YOUR_GOOGLE_FORM_URL_HERE
+    google_form_url = "https://docs.google.com/forms/d/e/1FAIpQLScurJAxkfSJSDfn3CXgGvJp8oPpv5kPCwACA1GR6vSLPTrONg/viewform?usp=sf_link"#YOUR_GOOGLE_FORM_URL_HERE
     st.markdown(f"[Fill out the form]({google_form_url})")
 
 # Page 6: Chatbot
